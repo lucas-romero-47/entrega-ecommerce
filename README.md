@@ -27,36 +27,4 @@ Este es un sistema de gestión de productos y carritos de compra desarrollado co
 
 ---
 
-## 🛠️ Instalación y Uso
-
-1. **Instalar dependencias:**
-   ```bash
-   npm install
-Iniciar el servidor:
-
-Bash
-npm start
-El servidor correrá en: http://localhost:8080
-
-🔌 Endpoints de la API
-Productos (/api/products)
-GET /: Listar todos los productos cargados.
-
-POST /: Agregar un nuevo producto (vía Postman).
-
-DELETE /:pid: Eliminar un producto por ID.
-
-Carrito (/api/carts)
-GET /:cid: Ver productos en un carrito específico (con Populate activo).
-
-POST /:cid/products/:pid: Agregar un producto al carrito.
-
-DELETE /:cid/products/:pid: Eliminar un producto del carrito.
-
-DELETE /:cid: Vaciar el carrito completo.
-
-📝 Notas de la Entrega
-
-Se optimizó la lógica del frontend para asegurar que las peticiones asíncronas de tipo DELETE se procesen correctamente, utilizando Data Attributes en el HTML para el manejo seguro de IDs de MongoDB. La interfaz fue simplificada para mejorar la legibilidad y la experiencia de usuario.
-
 Desarrollado por: Lucas
