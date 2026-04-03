@@ -60,6 +60,3 @@ DELETE /:cid: Vaciar el carrito completo.
 Se optimizó la lógica del frontend para asegurar que las peticiones asíncronas de tipo DELETE se procesen correctamente, utilizando Data Attributes en el HTML para el manejo seguro de IDs de MongoDB. La interfaz fue simplificada para mejorar la legibilidad y la experiencia de usuario.
 
 Desarrollado por: Lucas
-Se optimizó la lógica del frontend para asegurar que las peticiones asíncronas de tipo DELETE se procesen correctamente, utilizando Data Attributes en el HTML para el manejo seguro de IDs de MongoDB. La interfaz fue simplificada para mejorar la legibilidad y la experiencia de usuario.
-
-Desarrollado por: Lucas
