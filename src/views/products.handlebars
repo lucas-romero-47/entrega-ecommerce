@@ -1,0 +1,156 @@
+<div class="container mt-5">
+  <div class="header-section text-center mb-5">
+    <h1 class="display-4 fw-bold text-primary">Kiosco Escuela N11</h1>
+    <p class="lead text-muted">¡Los mejores sabores para tu recreo!</p>
+    <hr class="w-25 mx-auto border-primary border-3 opacity-75" />
+  </div>
+
+  <div class="row g-4">
+    {{#if payload.length}}
+      {{#each payload}}
+        <div class="col-12 col-md-6 col-lg-4">
+          <div
+            class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden product-card"
+          >
+
+            {{#if this.thumbnails.length}}
+              <div class="position-relative">
+                <img
+                  src="{{this.thumbnails.[0]}}"
+                  class="card-img-top"
+                  alt="{{this.title}}"
+                  style="height: 220px; object-fit: cover;"
+                />
+                <span
+                  class="position-absolute top-0 end-0 m-3 badge rounded-pill bg-primary shadow"
+                >
+                  {{this.category}}
+                </span>
+              </div>
+            {{else}}
+              <div
+                class="bg-light d-flex align-items-center justify-content-center"
+                style="height: 220px;"
+              >
+                <i class="bi bi-image text-muted fs-1"></i>
+              </div>
+            {{/if}}
+
+            <div class="card-body p-4 d-flex flex-column">
+              <div
+                class="d-flex justify-content-between align-items-start mb-2"
+              >
+                <h5
+                  class="card-title fw-bold mb-0 text-dark"
+                >{{this.title}}</h5>
+                <span class="text-success fw-bold fs-5">${{this.price}}</span>
+              </div>
+              <p
+                class="card-text text-secondary small mb-3"
+              >{{this.description}}</p>
+
+              <div
+                class="d-flex align-items-center justify-content-between mt-auto"
+              >
+                <div class="stock-info">
+                  <small class="text-muted">Stock:</small>
+                  {{#if this.stock}}
+                    <span class="badge bg-light text-dark border">{{this.stock}}
+                      unidades</span>
+                  {{else}}
+                    <span class="badge bg-danger border">Sin stock</span>
+                  {{/if}}
+                </div>
+                <small
+                  class="text-muted font-monospace"
+                  style="font-size: 0.7rem;"
+                >Cód: {{this.code}}</small>
+              </div>
+            </div>
+
+            <div class="card-footer p-4 bg-white border-0">
+              <button
+                onclick="addToCart('{{this._id}}')"
+                class="btn btn-primary w-100 rounded-pill fw-bold py-2 shadow-sm btn-add-cart"
+              >
+                <i class="bi bi-cart-plus me-2"></i>Agregar al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    {{else}}
+      <div class="col-12 text-center py-5">
+        <div class="card border-0 shadow-sm p-5 bg-light rounded-4">
+          <h3 class="text-muted">¡Ups! Menú vacío</h3>
+          <p>Estamos preparando las mejores ofertas para el próximo recreo.
+            ¡Vuelve pronto!</p>
+        </div>
+      </div>
+    {{/if}}
+  </div>
+
+  <nav class="mt-5 pb-5">
+    <ul class="pagination justify-content-center pagination-lg">
+      {{#if hasPrevPage}}
+        <li class="page-item">
+          <a
+            class="page-link rounded-start-pill px-4 shadow-sm"
+            href="{{prevLink}}"
+          >
+            &laquo; Anterior
+          </a>
+        </li>
+      {{/if}}
+
+      <li class="page-item disabled">
+        <span
+          class="page-link bg-primary text-white border-primary px-4 shadow-sm"
+        >
+          Página
+          {{page}}
+          de
+          {{totalPages}}
+        </span>
+      </li>
+
+      {{#if hasNextPage}}
+        <li class="page-item">
+          <a
+            class="page-link rounded-end-pill px-4 shadow-sm"
+            href="{{nextLink}}"
+          >
+            Siguiente &raquo;
+          </a>
+        </li>
+      {{/if}}
+    </ul>
+  </nav>
+</div>
+
+<style>
+  .product-card {
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+    background-color: #fff;
+  }
+  .product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
+  }
+  .btn-add-cart {
+    transition: all 0.3s ease;
+  }
+  .btn-add-cart:hover {
+    filter: brightness(1.1);
+    transform: scale(1.02);
+  }
+  .page-link {
+    color: #0d6efd;
+    border: none;
+    margin: 0 5px;
+  }
+</style>
+
+<script src="/js/index.js"></script>
